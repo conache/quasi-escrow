@@ -171,7 +171,8 @@ describe("LegalAgreement", () => {
       expect(await legalAgreement.depositAmount()).to.equal(0);
       expect(await legalAgreement.stage()).to.equal(2);
 
-      // check seller balance
+      // check contract & seller balance
+      expect(await escrowToken.balanceOf(legalAgreement.address)).to.equal(0);
       expect(await escrowToken.balanceOf(seller.address)).to.equal(depositAmount);
     });
 
