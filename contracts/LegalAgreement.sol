@@ -71,6 +71,7 @@ contract LegalAgreement {
 
         // transfer tokens to the seller and makr agreement completed
         erc20Token.safeTransfer(msg.sender, depositAmount);
+
         stage = AgreementStage.COMPLETED;
         depositAmount = 0;
     }
