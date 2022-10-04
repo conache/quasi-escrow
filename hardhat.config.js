@@ -3,6 +3,8 @@ require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-web3");
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
+require("hardhat-contract-sizer");
+require("solidity-coverage");
 
 const key = process.env.ALCHEMY_KEY;
 

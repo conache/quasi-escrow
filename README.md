@@ -19,9 +19,25 @@ To compile the smart contracts:
 
 `npx hardhat compile`
 
+<br/>
+
 To run tests:
 
 `npx hardhat test`
+
+<br/>
+
+To check coverage metrics:
+
+`npx hardhat coverage`
+
+<br/>
+
+To check the contract sizes:
+
+`npx hardhat size-contracts`
+
+<br/>
 
 To deploy:
 
