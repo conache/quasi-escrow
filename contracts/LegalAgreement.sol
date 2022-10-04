@@ -52,7 +52,7 @@ contract LegalAgreement {
         unlockTimestamp = block.timestamp + _timePeriod;
         erc20Token = IERC20(_tokenAddress);
 
-        // deposit token in the smart contract
+        // deposit token amount at the contract address
         erc20Token.safeTransferFrom(msg.sender, address(this), _amount);
 
         depositAmount = _amount;
@@ -69,7 +69,7 @@ contract LegalAgreement {
             "Withdraw not allowed in this stage"
         );
 
-        // transfer tokens to the seller and makr agreement completed
+        // transfer tokens to the seller and make agreement completed
         erc20Token.safeTransfer(msg.sender, depositAmount);
 
         stage = AgreementStage.COMPLETED;
