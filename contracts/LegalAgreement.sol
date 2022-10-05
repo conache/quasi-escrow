@@ -51,12 +51,11 @@ contract LegalAgreement {
         seller = _address;
         unlockTimestamp = block.timestamp + _timePeriod;
         erc20Token = IERC20(_tokenAddress);
+        depositAmount = _amount;
+        stage = AgreementStage.WAITING;
 
         // deposit token amount at the contract address
         erc20Token.safeTransferFrom(msg.sender, address(this), _amount);
-
-        depositAmount = _amount;
-        stage = AgreementStage.WAITING;
     }
 
     function withdraw() public onlySeller {
@@ -68,11 +67,10 @@ contract LegalAgreement {
             stage == AgreementStage.WAITING,
             "Withdraw not allowed in this stage"
         );
+        stage = AgreementStage.COMPLETED;
 
         // transfer tokens to the seller and make agreement completed
         erc20Token.safeTransfer(msg.sender, depositAmount);
-
-        stage = AgreementStage.COMPLETED;
         depositAmount = 0;
     }
 }
